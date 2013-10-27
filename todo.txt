@@ -15,3 +15,14 @@ The app should incorporate the following features.
 6.  Use only one single HTML file for the main content and functionality
 7.  Assume that your app could be wired up to some server side data feed, but build it using mockup client side content (i.e. clearly indicate in your comments the portions of the code that you think should be dynamic if the app were using live data.
 8.  A collapsable side panel with some info about your app.  e.g. usage instructions or something similar.
+
+
+So far
+simple list page using jq
+simiple list filter - search (should it be alphabet?)
+
+to do
+theme roller
+injection
+live data
+
