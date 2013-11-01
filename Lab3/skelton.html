@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Page Title</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" />
+   </head>
+
+   <body>
+       <div data-role="page" id="first" data-theme="a">
+           <div data-role="header">
+               <h1>Page Title1</h1>
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p>Page content goes here.</p>
+               <a href="#second" data-transition="flip">Go to second page</a>
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>Page Footer1</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+
+       <div data-role="page" id="second" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Page Title2</h1>
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p>Page content goes here.</p>
+
+
+How can we link back to the first "page"?
+
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>Page Footer2</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       <!-- JavaScript placed at the end of the document so the pages load faster. -->
+       <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+   </body>
+</html>

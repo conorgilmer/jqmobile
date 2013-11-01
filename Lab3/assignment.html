@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Assignment for Daniel Mobile JQuery</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" />
+  	<script src="jqm-present.js" type='text/javascript'></script>
+        
+   </head>
+
+   <body>
+       <div data-role="page" id="first" data-theme="a">
+           <div data-role="header">
+               <h1>My Favourite Food....</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p>German Food.</p>
+               <ul data-role="listview" data-filter="true" data-inset="true" data-dividertheme="b">
+                   <li data-role="list-divider">Menu</li>
+                   <li><a href="#gros" data-transition="slideup">Grostel</a></li>
+                   <li><a href="#curr" data-transition="flip">Curry Wurst</a></li>
+                   <li><a href="#snit" data-transition="flow">Schnitzel</a></li>
+                   <li><a href="#pork" data-transition="fade">Pork Knuckle</a></li>
+                   <li><a href="#spec" data-transition="flip">Spaetzle</a></li>
+                   <li><a href="#brat" data-transition="flow">Bratwurst</a></li>
+               </ul>
+               <!--a href="#second" data-transition="flip">Restaurants</a-->
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+
+       <!-- gros -->
+        <div data-role="page" id="gros" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Grostel</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/gros.jpg" width="300" height="300" />Grostel big in Bavaria and Austria(Tyrol), fried Potatoes, Onions, ham, left over meat, herbs(parsley), and a fried egg. Known in some places as Farmers plate.</p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+          
+       <!-- curr -->
+        <div data-role="page" id="curr" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Currywurst</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/curr.jpg" width="300" height="300" />Wurst, covered in curry sauce(currypowder onions tomato puree white wine ) served on a tray, with fries or saurcraut, and with a currywurst fork.
+               </p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+                
+       
+       <!-- gros -->
+        <div data-role="page" id="pork" data-theme="b" data-rel="back">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Pork Knuckle</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/pork.jpg" width="300" height="300" />Glazed Pork knuckle and saurkraut.</p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       
+     
+       
+       <!-- gros -->
+        <div data-role="page" id="snit" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Pork Snittzel</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/snit.jpg" width="300" height="300" />Weiner schnittzel Pork battered to a pulp, covered in breadcrumbs cooked and served with fries with lemon and a choice of sauces.</p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       
+            
+       
+       <!-- gros -->
+        <div data-role="page" id="brat" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Bratwurst</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/brat.jpg" width="300" height="300" />Bavarian Bratwurst served with a a bap with mustard or withchoice of saurcraut, fries or potaoes.</p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>The German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       
+                
+       
+       <!-- gros -->
+        <div data-role="page" id="spec" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Speck</h1>
+                    <a href="#first" class="ui-btn-right" data-icon="home" data-iconpos="notext" 
+           data-direction="reverse">Home</a> 
+           </div><!-- /header -->
+
+           <div data-role="content">
+               <p><img align="right" src="images/spla.jpg" width="300" height="300" />Spaetzle a german pasta and egg dish, from the swabia area of southern germany.</p>
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>The German Irish Food Company Teo.</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       
+       
+       
+       <!--div data-role="page" id="second" data-theme="b">
+           <div data-role="header" data-add-back-btn="true">
+               <h1>Restaurants serving german food</h1>
+           </div>
+           <div data-role="content">
+               <p>Page content goes here.</p>
+           </div>
+           <div data-role="footer">
+               <h4>GermanIrish Food Company Teo.</h4>
+           </div>
+       </div>  -->
+
+       <!-- JavaScript placed at the end of the document so the pages load faster. -->
+       <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+   </body>
+</html>

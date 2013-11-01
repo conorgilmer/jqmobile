@@ -1,0 +1,28 @@
+
+jquery mobile
+
+Build a "list app"
+
+You can make your site/app about anything that interests you.  For example, you might want to do a movie reviews app, a restaurant picker, a video jukebox, etc.
+
+
+The app should incorporate the following features.  
+1. Based on Mobile jQuery
+2. Present the user with an input box to filter the full list
+3. Use your own customized theme (ThemeRoller is fine but feel free to do something yourself if you prefer)
+4. Customize some of the default components, e.g. buttons, etc.
+5. Clicking on any list item (regardless of whether it is in the full or the filtered list) should use some page transition to present a "page" with extra content specific to that item.  
+6.  Use only one single HTML file for the main content and functionality
+7.  Assume that your app could be wired up to some server side data feed, but build it using mockup client side content (i.e. clearly indicate in your comments the portions of the code that you think should be dynamic if the app were using live data.
+8.  A collapsable side panel with some info about your app.  e.g. usage instructions or something similar.
+
+
+So far
+simple list page using jq
+simiple list filter - search (should it be alphabet?)
+
+to do
+theme roller
+injection
+live data
+

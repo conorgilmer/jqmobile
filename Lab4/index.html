@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>JQuery Monbile list</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" />
+      
+      <script>
+      
+      function listPosts(data) {
+
+      //$(data.dataResponse).each(function(results)){
+    //  $('ul)').append($('<li/>', { 'data-role': "list-divider"}).append($('<a/>',{'href': url, 'data-transisition': 'slide', 'text': publisher})));
+      //console.log("me");
+      //}
+      $.each(data.responseData.results,function(i,item){
+
+        console.log( encodeU(item.url) );
+        
+        //console.log(item.publisher);
+        $('ul').append($('<li/>', { 'data-role': "list-divider"}).append($('<a/>',{'href': unescape(item.url), 'data-transition': 'slide', 'text': item.publisher})));
+      
+})
+        // $('ul').listview('refresh');
+        // console.log(data.responseData.results[1]);
+//})
+      }
+      </script>
+     
+
+   </head>
+
+   <body>
+       <div data-role="page" id="first" data-theme="a">
+           <div data-role="header">
+               <h1>Lab 4 </h1>
+           </div><!-- /header -->
+
+           <div data-role="content">
+               
+<ul data-role="listview" data-theme="c" data-dividertheme="b">
+    <li data-role="list-divider">
+      The Divider
+    </li>
+    <!--li>
+      <a href="text.html" data-transitition="slide">list item 1</a>
+      </li-->
+    </ul>
+
+
+
+           </div><!-- /content -->
+
+           <div data-role="footer">
+               <h4>Lab 4 Jquery list dynamic import</h4>
+           </div><!-- /footer -->
+       </div><!-- /page -->
+       <!-- JavaScript placed at the end of the document so the pages load faster. -->
+       <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=Dublin&format=jsonp&callback=listPosts' type='text/javascript'></script>
+
+   </body>
+</html>

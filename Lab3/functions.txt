@@ -1,0 +1,34 @@
+// change slide with transition set in data-transition
+var changeSlide = function(toSlide){
+   if(toSlide.length) $.mobile.changePage( toSlide, { transition: toSlide.jqmData('transition') } );
+};
+
+// get home slide
+var getHomeSlide = function(){
+   return $(':jqmData(role=page):first');
+};
+// go home
+var goHome = function(){
+   changeSlide( getHomeSlide() );
+   return false;
+};
+
+// get next slide
+var getNextSlide = function(slide){
+   return slide.next(':jqmData(role=page)');
+};
+// go next slide
+var goForward = function(){
+   changeSlide( getNextSlide($.mobile.activePage) );
+   return false;
+};
+
+// get previous slide
+var getPrevSlide = function(slide){
+   return slide.prev(':jqmData(role=page)');
+};
+// go previous slide
+var goBack = function(){
+   changeSlide( getPrevSlide($.mobile.activePage) );
+   return false;
+};

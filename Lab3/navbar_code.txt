@@ -1,0 +1,48 @@
+$(':jqmData(role=page)').live( 'pagebeforecreate',function(event){
+   var slide = $(this);
+
+   // find footer or add it
+   var footer = $(":jqmData(role=footer)", slide );
+   if( !footer.length ) {
+      footer = $('<div data-role="footer" data-position="fixed" data-fullscreen="true"/>').appendTo(slide);
+   };
+
+   // add nav. bar
+   footer.html('<div data-role="navbar">'+
+               '<ul>'+
+                  '<li><a data-icon="back"></a></li>'+
+                  '<li><a data-icon="home"></a></li>'+
+                  '<li><a data-icon="forward"></a></li>' +
+               '</ul>'+
+            '</div>');
+
+   // Handle nav. bar clicks
+   var backButton = $(':jqmData(icon=back)', footer).click( goBack );
+   var homeButton = $(':jqmData(icon=home)', footer).click( goHome );
+   var forwardButton = $(':jqmData(icon=forward)', footer).click( goForward );
+
+   // get home, next and previous slides
+   var prevSlide = getPrevSlide( slide ), homeSlide = getHomeSlide(), nextSlide = getNextSlide( slide ) ;
+
+   // prev slide exists?
+   if( prevSlide.length ) {
+      // set href to slide ID
+      backButton.attr('href', '#'+ prevSlide.attr('id') );
+      homeButton.attr('href', '#'+ homeSlide.attr('id') )
+   }else{
+      // disable buttons otherwise
+      backButton.addClass('ui-disabled');
+      homeButton.addClass('ui-disabled')
+   };
+
+   // next slide exists?
+   if( nextSlide.length ) {
+      // set href to slide ID
+      forwardButton.attr('href', '#'+ nextSlide.attr('id') )
+   }else{
+      // disable button otherwise
+      forwardButton.addClass('ui-disabled')
+   };
+
+   //.........
+});
