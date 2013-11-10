@@ -1,16 +1,20 @@
 <?php
 /*
-* Generate JSON
+* Generate JSON to a file
 * for coffee shop (corona) example
-* write to stream using callback function
-* e.g http://localhost/genjson.php?callback=listposts 
-*
-* TODO- Array could be populated from Database
+* write to stream and/or file
 *
 * By Conor Gilmer
 */
 
+function writeToFile ( $contents, $filename ) {
+	$myFile = $filename;
+	$fh = fopen($myFile, 'w') or die("can't open file");
+	fwrite($fh, $contents);
+	fclose($fh);
+}
 
+//data structure for json arrays
 $data = array("data" => array(
   "products" => array(
 	"coffees" => array (
@@ -62,24 +66,14 @@ $data = array("data" => array(
 	)
 	);
 
-//encode data to json
+//output to file
 $output =  json_encode($data);
-
-//format for callback function
-if(array_key_exists('callback', $_GET)){
-
-    header('Content-Type: text/javascript; charset=utf8');
-    header('Access-Control-Allow-Origin: http://www.example.com/');
-    header('Access-Control-Max-Age: 3628800');
-    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-
-    $callback = $_GET['callback'];
-    echo $callback.'('.$output.');';
-
-}else{
+writeToFile($output, "output.json");
 
 // Output to console
-header('Content-type: application/json; charset=utf8');
+//header('Cache-Control: no-cache, must-revalidate');
+//header('Expires: Mon, 26 Jul 2014 05:00:00 GMT');
+header('Content-type: application/json');
 echo $output;
-}
+
 ?>
