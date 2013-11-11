@@ -4,6 +4,7 @@
 * for coffee shop (corona) example
 * write to stream using callback function
 * e.g http://localhost/genjson.php?callback=listposts 
+* orignally written in perl
 *
 * TODO- Array could be populated from Database
 *
