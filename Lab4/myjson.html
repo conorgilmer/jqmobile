@@ -7,22 +7,19 @@
       
       <script>
       
-      function listPosts(data) {
-
+      function listPosts(data1) {
       //$(data.dataResponse).each(function(results)){
     //  $('ul)').append($('<li/>', { 'data-role': "list-divider"}).append($('<a/>',{'href': url, 'data-transisition': 'slide', 'text': publisher})));
-      //console.log("me");
       //}
-      $.each(data.responseData.results,function(i,item){
+      $.each(data1.data.products.coffees,function(i,item){
 
-        //console.log( encodeU(item.url) );
+        console.log( item.price);
         
-        //console.log(item.publisher);
-        $('ul').append($('<li/>', { 'data-role': "list-divider"}).append($('<a/>',{'href': unescape(item.url), 'data-transition': 'slide', 'text': item.publisher})));
+        $('ul').append($('<li/>', { 'data-role': "list-divider"}).append($('<a/>',{'href': (item.type), 'data-transition': 'slide', 'text': item.desc})));
       
 })
         // $('ul').listview('refresh');
-        console.log(data.responseData);
+        console.log(data1.data);
 //})
       }
       </script>
@@ -58,7 +55,7 @@
        <!-- JavaScript placed at the end of the document so the pages load faster. -->
        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
        <script type="text/javascript" src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
-        <script src='https://ajax.googleapis.com/ajax/services/search/news?v=1.0&q=Dublin&format=jsonp&callback=listPosts' type='text/javascript'></script>
+        <script src='http://127.0.0.1/jqmobile/Lab3/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script>
 
    </body>
 </html>
