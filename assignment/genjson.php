@@ -17,21 +17,21 @@ $data = array("data" => array(
 			array ( "type" => "Latte",
 				"country" => "Italy",
 				"desc" => "Hot milk and coffee",
-				"image" => "images/coffee1.jpg",
+				"image" => "images/coffee1.png",
 				"price" => "3.50"
 				),  
 
 			array ( "type" => "Americano",
 				"country" => "USA",
 				"desc" => "American style black coffee",
-				"image" => "images/coffee2.jpg",
+				"image" => "images/coffee2.png",
 				"price" => "2.20"
 				),  
 
 			array ( "type" => "Espresso",
 				"country" => "Italy",
 				"desc" => "Finest Italian Espresso coffee",
-				"image" => "images/coffee3.jpg",
+				"image" => "images/coffee3.png",
 				"price" => "2.90"
 				)  
 			)
@@ -40,21 +40,21 @@ $data = array("data" => array(
 			array ( "type" => "Breakfast",
 				"country" => "Ireland",
 				"desc" => "Refreshing Tea",
-				"image" => "images/tea1.jpg",
+				"image" => "images/tea3.png",
 				"price" => "1.50"
 				),  
 
 			array ( "type" => "Peppermint",
 				"country" => "USA",
 				"desc" => "Mint tea",
-				"image" => "images/tea2.jpg",
+				"image" => "images/tea1.png",
 				"price" => "2.00"
 				),  
 
 			array ( "type" => "Lemon",
 				"country" => "france",
-				"desc" => "Warm Lemon Tea",
-				"image" => "images/tea3.jpg",
+				"desc" => "Warm Lemon Tea2",
+				"image" => "images/tea2.png",
 				"price" => "2.10"
 				)  
 			)

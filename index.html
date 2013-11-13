@@ -1,17 +1,10 @@
-<!-- Mobile Web Development - JQuery Assignment -->
-<!-- by Conor Gilmer (conor.gilmer@gmail.com)   -->
-<!-- 						-->
-<!-- Date : 8/11/2013 -->
-<!-- Digital Skills Academy - Webelevate 2.1    -->
-<!-- Lecturer : Daniel Griffin                  -->
-<!-- 						-->
 <!DOCTYPE html>
 <html>
    <head>
       <title>Assignment for Daniel Mobile JQuery</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!--link rel="stylesheet" href="css/themes/my-custom-theme.css" /-->
+  <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
   <link type="text/css" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" rel="stylesheet" />
 				
   <link rel="stylesheet" href="themes/conorstheme.css" />
@@ -23,44 +16,45 @@
   <script src="jqm-present.js" type='text/javascript'></script>
 
 <script>
-var gdata ={};
-var num; 
+
+//Swipe right handler function. Swipe right to open the info panel
+
+$(function(){
+  // Bind the swipeHandler callback function to the swipe event on div.box
+  $( document ).on( "swiperight", swipeHandler );
+ 	
+  // Callback function references the event target and adds the 'swipe' class to it
+  function swipeHandler( event ){
+    $( "#myPanel" ).panel( "open" );
+    //change the text prompt
+    $('#swipetext').html('<h3>Tap to close panel</h3>');
+ 
+  }
+});
+
+
+//When the panel closes change the text back
+$( document ).on( "panelclose", function( event, ui ) {
+      $('#swipetext').html('<h3>Swipe For Info --->>></h3>');
+ 
+});
+  
+
+	</script>
+
+      <script>
 // Import data for lists
       function listPosts(data1) {
-	gdata = data1;
       $.each(data1.data.products.coffees,function(i,item){
-	num = $(this).index(); 
         //$('ul').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.image), 'data-transition': 'slide', 'text': item.desc})));
-        $('ul#cof').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': ('#displayPage' ), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
+        $('ul#cof').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.image), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
 })
         // $('ul').listview('refresh');
       $.each(data1.data.products.teas,function(i,item){
        $('ul#teas').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.image), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
 })
-       //  $('ul').listview('refresh');
+         $('ul').listview('refresh');
       }
-
-
-
-/*
-  $('#displayPage').on('pageinit', function() {
-	 console.log(gdata.data.products.coffees[1].desc);   
-             $(this).find('[data-role=header]').text("mine");//gdata.data.products.coffees[num].type + "the end");
-                $('#descriptionTxt').html(gdata.data.coffees[num].desc).append('<br>'+gdata.data.coffees[num].country);
-            });
-
-*/
-
-
-$( document ).on( "pageshow", "#MakePage", function( event ) {
-  objId=sessionStorage.myid
-  $('#makeImg').html('<img src=\"images/' + data1[objId].image + '.png\"/>');
-  $('#makeTxt').html('<br>'+data1[objId].desc+'<br>');
- 
-});
-
-
-
       </script>
         
    </head>
@@ -85,9 +79,6 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
       <div data-role="collapsible">
         <h3>Contact</h3>
         <p>Email: conor.gilmer@gmail.com</br>Skype: conor.gilmer</br>Twitter: twitter.com/conorgilmer</p>
-        <!--div class="logo_wrapper">
-          <img src="images/contact.jpg" class="logo"/>
-        </div-->
       </div>
 
       <div data-role="collapsible">
@@ -100,9 +91,6 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
         <p>Based on lab sessions 3 and 4 Mobile JQuery - showing a list view. The Food view is populated from the file. The Reader reads a json stream from the callback function, for this to work the file genson.php needs to be running on a server..</p>
 <p>I used JQuery Themeroller to make some css for the color scheme - apologies for the colours!</p> 
 
-       <!--div class="logo_wrapper">
-          <img src="images/about.jpg" class="logo"/>
-        </div-->
       </div>
     </div>
 
@@ -310,52 +298,20 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
     </ul>
 
 
+
+
            </div><!-- /content -->
 
            <div data-role="footer">
                <h4>Lab 4 Jquery list dynamic import. By Conor Gilmer (conor.gilmer@gmail.com)</h4>
            </div><!-- /footer -->
        </div><!-- /page -->
-
-
-
-<div data-role="page" id="makePage" data-theme="b" data-transition="flip">
-	<div data-role="header" id="descriptionHeader">
-		<h1>Generated Page</h1>
-	</div>
-	<div class="ui-grid-a ui-responsive" data-role="content">
-		<div class="ui-block-a" >
-			<div class="parent" id="makeImg">
-   				<span class="clear"></span>
-			</div>
-		</div>
-		<div class="ui-block-b" id="makeText"></div>
-	</div>
-
-</div> 
-
-     
-
- <!-- display -->
-        <div data-role="page" id="displayPage">
-            <div data-role="header">
-                 <h3>Name Goes Here</h3>
- <a data-role="button" data-rel="back" data-icon="back">Back</a>
-
-            </div>
-            <div data-role="content">
-                <div id="descriptionTxt">Definition goes here</div>
-            </div>
-        </div>
-   
-  
-
         
 
-<script src='http://127.0.0.1/jqmobile/assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script>
-<!--script src='http://www.appwayz.com/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
-<!--script src='http://localhost/jquery/
-assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
+
+
+<script src='http://www.appwayz.com/webelevate/mobdev/assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script>
+<!--script src='http://127.0.0.1/jqmobile/Lab3/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
 
 
 
