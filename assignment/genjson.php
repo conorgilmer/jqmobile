@@ -16,6 +16,7 @@ $data = array("data" => array(
 	"coffees" => array (
 			array ( "type" => "Latte",
 				"country" => "Italy",
+				"wiki" => "https://en.wikipedia.org/wiki/Latte",
 				"desc" => "Hot milk and coffee",
 				"image" => "images/coffee1.png",
 				"price" => "3.50"
@@ -23,6 +24,7 @@ $data = array("data" => array(
 
 			array ( "type" => "Americano",
 				"country" => "USA",
+				"wiki" => "https://en.wikipedia.org/wiki/Caff%C3%A8_Americano",
 				"desc" => "American style black coffee",
 				"image" => "images/coffee2.png",
 				"price" => "2.20"
@@ -30,6 +32,7 @@ $data = array("data" => array(
 
 			array ( "type" => "Espresso",
 				"country" => "Italy",
+				"wiki" => "https://en.wikipedia.org/wiki/Espresso",
 				"desc" => "Finest Italian Espresso coffee",
 				"image" => "images/coffee3.png",
 				"price" => "2.90"
@@ -39,13 +42,15 @@ $data = array("data" => array(
 	"teas" => array (
 			array ( "type" => "Breakfast",
 				"country" => "Ireland",
+				"wiki" => "g/wiki/tea",
 				"desc" => "Refreshing Tea",
 				"image" => "images/tea3.png",
 				"price" => "1.50"
 				),  
 
 			array ( "type" => "Peppermint",
-				"country" => "USA",
+				"country" => "Morocco",
+				"wiki" => "https://en.wikipedia.org/wiki/Touareg_tea",
 				"desc" => "Mint tea",
 				"image" => "images/tea1.png",
 				"price" => "2.00"
@@ -53,6 +58,7 @@ $data = array("data" => array(
 
 			array ( "type" => "Lemon",
 				"country" => "france",
+				"wiki" => "https://en.wikipedia.org/wiki/tea",
 				"desc" => "Warm Lemon Tea2",
 				"image" => "images/tea2.png",
 				"price" => "2.10"

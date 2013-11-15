@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css"
+        />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    </head>
+    
+    <body>
+        <!-- Glossary -->
+        <div data-role="page" id="glossary">
+            <div data-role="header">
+                 <h3>Glossary</h3>
+
+            </div>
+            <div data-role="content">
+                <ul data-role='listview' data-inset='true' id='resultsList'>
+                    <!-- keep empty for dynamically added items -->
+                </ul>
+            </div>
+        </div>
+        <!-- display -->
+        <div data-role="page" id="display">
+            <div data-role="header">
+                 <h3>Name Goes Here</h3>
+ <a data-role="button" data-rel="back" data-icon="back">Back</a>
+
+            </div>
+            <div data-role="content">
+                <div id="descriptionTxt">Definition goes here</div>
+            </div>
+        </div>
+        <script>
+            var json = {
+                "results": [{
+                    "title": "Cole System",
+                    "description": "An Opening for White.",
+                    "moves": "1. d4 : d5; 2. e3 : Nf6; 3.Bd3 : c6"
+                }, {
+                    "title": "Scillian",
+                    "description": "An opening for Black against e4 for white",
+                    "moves": "1.e4 : c5; 2. Nf3 : d6; 3. d4 : cxd4; 4. Nxd4 : Nf6;"
+                }, {
+                    "title": "Caro Kahn",
+                    "description": "An opening for Black against e4 by white",
+                    "moves": "1. e4 : d6; 2. d4 : Nf6; "
+                }],
+                    "ok": "true"
+            };
+            var currentItem = 0;
+
+            $('#glossary').on('pageinit', function() {
+
+                $.each(json.results, function(i, term) {
+                    $('#resultsList').append('<li><a href="#display">' + term.title + '</a></li>')
+                });
+                $('#resultsList').listview('refresh');
+
+                $('#resultsList li').click(function() {
+                    currentItem = $(this).index();
+                });
+            });
+
+            $('#display').on('pagebeforeshow', function() {
+                $(this).find('[data-role=header] .ui-title').text(json.results[currentItem].title);
+                $('#descriptionTxt').html(json.results[currentItem].description).append('<br>'+json.results[currentItem].moves);
+            });
+        </script>
+    </body>
+
+</html>

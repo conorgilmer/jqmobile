@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+        <link rel="stylesheet" href="css/conors.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    </head>
+    
+    <body>
+        <!-- Glossary -->
+        <div data-role="page" id="glossary">
+            <div data-role="header">
+                 <h3>Glossary</h3>
+
+            </div>
+            <div data-role="content">
+                <ul data-role='listview' data-inset='true' id='resultsList'>
+                    <!-- keep empty for dynamically added items -->
+                </ul>
+            </div>
+        </div>
+        <!-- display -->
+        <div data-role="page" id="display">
+            <div data-role="header">
+                 <h3>Name Goes Here</h3>
+ <a data-role="button" data-rel="back" data-icon="back">Back</a>
+
+            </div>
+            <div data-role="content">
+                <div id="descriptionTxt">Definition goes here</div>
+            </div>
+        </div>
+        <script>
+            var jsonarray = {
+                "results": [{
+                    "name": "Fig Rolls",
+                    "image": "images/figroll.png",
+                    "description": "Jacobs classic figrolls",
+                    "country": "Ireland"
+                }, {
+                    "name": "Custard Cream",
+                    "image": "images/custard.png",
+                    "description": "Sweet sugary custard sandwiched between two biscuits",
+                    "country": "Ireland"
+                }, {
+                    "name": "Chocolate Chip Cookie",
+                    "image": "images/chocchip.png",
+                    "description": "American Cookies infused with chocolate chips",
+                    "country": "America"
+                }],
+                    "ok": "true"
+            };
+            var currentItem = 0;
+
+            $('#glossary').on('pageinit', function() {
+
+                $.each(jsonarray.results, function(i, term) {
+                    $('#resultsList').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': "#display", 'data-transition': 'slide', 'text': term.description}).append($('<img src=\"'+term.image+'\" class=\"img-thumb\" />'))));
+                    //$('#resultsList').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': "#display", 'text': term.name})));
+                });
+                $('#resultsList').listview('refresh');
+
+                $('#resultsList li').click(function() {
+                    currentItem = $(this).index();
+                });
+            });
+
+            $('#display').on('pagebeforeshow', function() {
+                $(this).find('[data-role=header] .ui-title').text(jsonarray.results[currentItem].name);
+                $('#descriptionTxt').html(jsonarray.results[currentItem].description).append('<br>'+jsonarray.results[currentItem].country).append('<img src=\"'+jsonarray.results[currentItem].image+'\"/>');
+            });
+        </script>
+    </body>
+
+</html>

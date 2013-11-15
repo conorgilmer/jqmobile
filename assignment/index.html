@@ -1,10 +1,12 @@
 <!-- Mobile Web Development - JQuery Assignment -->
+<!--                                            -->
 <!-- by Conor Gilmer (conor.gilmer@gmail.com)   -->
-<!-- 						-->
+<!--                                            -->
+<!-- DIT ID D12127567                           -->
 <!-- Date : 8/11/2013 -->
 <!-- Digital Skills Academy - Webelevate 2.1    -->
 <!-- Lecturer : Daniel Griffin                  -->
-<!-- 						-->
+<!--                                            -->
 <!DOCTYPE html>
 <html>
    <head>
@@ -20,49 +22,68 @@
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile.structure-1.3.2.min.css" /> 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script> 
   <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script> 
-  <script src="jqm-present.js" type='text/javascript'></script>
-
+  <!--script src="jqm-present.js" type='text/javascript'></script>
+-->
 <script>
-var gdata ={};
-var num; 
+
 // Import data for lists
       function listPosts(data1) {
-	gdata = data1;
       $.each(data1.data.products.coffees,function(i,item){
-	num = $(this).index(); 
-        //$('ul').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.image), 'data-transition': 'slide', 'text': item.desc})));
-        $('ul#cof').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': ('#displayPage' ), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
+        //$('ul').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.wiki), 'data-transition': 'slide', 'text': item.desc})));
+        $('ul#cof').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.wiki), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
 })
         // $('ul').listview('refresh');
       $.each(data1.data.products.teas,function(i,item){
-       $('ul#teas').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.image), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
+       $('ul#teas').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': (item.wiki), 'data-transition': 'slide', 'text': item.desc}).append($('<img src=\"'+item.image+'\" class=\"img-thumb\" />'))));
 })
-       //  $('ul').listview('refresh');
+     //    $('ul').listview('refresh');
       }
+      </script>
+       
 
+<script>
+//Read from array 
+  var jsonarray = {
+                "results": [{
+                    "name": "Fig Rolls",
+                    "image": "images/figroll.png",
+                    "description": "Jacobs classic figrolls",
+                    "country": "Ireland"
+                }, {
+                    "name": "Custard Cream",
+                    "image": "images/custard.png",
+                    "description": "Sweet sugary custard sandwiched between two biscuits",
+                    "country": "Ireland"
+                }, {
+                    "name": "Chocolate Chip Cookie",
+                    "image": "images/chocchip.png",
+                    "description": "American Cookies infused with chocolate chips",
+                    "country": "America"
+                }],
+                    "ok": "true"
+            };
+            var currentItem = 0;
+console.log("in here");
+            $( document ).on('pageinit', "#readarray",  function() {
 
-
-/*
-  $('#displayPage').on('pageinit', function() {
-	 console.log(gdata.data.products.coffees[1].desc);   
-             $(this).find('[data-role=header]').text("mine");//gdata.data.products.coffees[num].type + "the end");
-                $('#descriptionTxt').html(gdata.data.coffees[num].desc).append('<br>'+gdata.data.coffees[num].country);
+console.log("in here now");
+                $.each(jsonarray.results, function(i, term) {
+                    $('ul#resultsList').append($('<li/>', { 'data-role': "listview"}).append($('<a/>',{'href': "#display", 'data-transition': 'slide', 'text': term.description}).append($('<img src=\"'+term.image+'\" class=\"img-thumb\" />'))));
+                    //$('ul#resultsList').append($('<li/>', { 'data-role': "listview"}).append(term.name));
+                });
+              //  $('#resultsList').listview('refresh');
+                $('#resultsList li').click(function() {
+                    currentItem = $(this).index();
+                });
             });
 
-*/
+            $(document).on('pagebeforeshow', "#display", function() {
+                $(this).find('[data-role=header] .ui-title').text(jsonarray.results[currentItem].name);
+                $('#descriptionTxt').html(jsonarray.results[currentItem].description).append('<br>'+jsonarray.results[currentItem].country).append('<img src=\"'+jsonarray.results[currentItem].image+'\"/>');
+            });
 
-
-$( document ).on( "pageshow", "#MakePage", function( event ) {
-  objId=sessionStorage.myid
-  $('#makeImg').html('<img src=\"images/' + data1[objId].image + '.png\"/>');
-  $('#makeTxt').html('<br>'+data1[objId].desc+'<br>');
+</script>
  
-});
-
-
-
-      </script>
-        
    </head>
 
    <body>
@@ -79,16 +100,25 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
     </div>
 
     <a href="#food" data-role="button" data-transition="flip">German Food Menu</a>
-    <a href="#reader" data-role="button" data-transition="flip">Read in Json</a>
+    
+    <a href="#reader" data-role="button" data-transition="flip">Coffee/Tea Read in Json, using callback</a>
+   
+    <a href="#readarray" data-role="button" data-transition="flip">Biscuits from a Json Array</a>
 
     <div data-role="collapsible-set">
+
       <div data-role="collapsible">
-        <h3>Contact</h3>
-        <p>Email: conor.gilmer@gmail.com</br>Skype: conor.gilmer</br>Twitter: twitter.com/conorgilmer</p>
-        <!--div class="logo_wrapper">
-          <img src="images/contact.jpg" class="logo"/>
-        </div-->
-      </div>
+        <h3>About</h3>
+        <p>Based on lab sessions 3 and 4 Mobile JQuery - showing a list view. The Food view is populated from the file. The Reader reads a json stream from the callback function, for this to work the file genson.php needs to be running on a server..</p>
+<p>I used JQuery Themeroller to make some css for the color scheme - apologies for the colours!</p> 
+<p>The Json can be read from a file(genjson.php) on the localhost if this deployed on a server the <a target="_blank" href="./genjson.php?format=file">genjson.php</a> should retrurn the json file</p>
+<p>There is an online copy of this application deployed <a target="_blank" href="http://www.appwayz.com/webelevate/mobdev/assignment/index.html">here</a>
+</p>
+<p>
+I threw in an initial go I had at importing in json from a fixed array the original was <a target="_blank" href="bickies.html">bickies</a>. 
+
+</p> 
+    </div>
 
       <div data-role="collapsible">
         <h3>Background</h3>
@@ -96,14 +126,10 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
       </div>
 
       <div data-role="collapsible">
-        <h3>About</h3>
-        <p>Based on lab sessions 3 and 4 Mobile JQuery - showing a list view. The Food view is populated from the file. The Reader reads a json stream from the callback function, for this to work the file genson.php needs to be running on a server..</p>
-<p>I used JQuery Themeroller to make some css for the color scheme - apologies for the colours!</p> 
-
-       <!--div class="logo_wrapper">
-          <img src="images/about.jpg" class="logo"/>
-        </div-->
+        <h3>Contact</h3>
+        <p>Email: conor.gilmer@gmail.com</br>Skype: conor.gilmer</br>Twitter: twitter.com/conorgilmer</p>
       </div>
+
     </div>
 
   </div>
@@ -188,9 +214,8 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
                <h4> &copy; German Irish Food Company Teo.</h4>
            </div><!-- /footer -->
        </div><!-- /page -->
-                
        
-       <!-- gros -->
+       <!-- pork -->
         <div data-role="page" id="pork" data-theme="b" data-rel="back">
            <div data-role="header" data-add-back-btn="true">
                <h1>Pork Knuckle</h1>
@@ -208,9 +233,7 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
            </div><!-- /footer -->
        </div><!-- /page -->
        
-     
-       
-       <!-- gros -->
+       <!-- snit  -->
         <div data-role="page" id="snit" data-theme="b">
            <div data-role="header" data-add-back-btn="true">
                <h1>Pork Snittzel</h1>
@@ -228,9 +251,8 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
            </div><!-- /footer -->
        </div><!-- /page -->
        
-            
        
-       <!-- gros -->
+       <!-- brat -->
         <div data-role="page" id="brat" data-theme="b">
            <div data-role="header" data-add-back-btn="true">
                <h1>Bratwurst</h1>
@@ -247,10 +269,9 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
                <h4> &copy; The German Irish Food Company Teo.</h4>
            </div><!-- /footer -->
        </div><!-- /page -->
-       
                 
        
-       <!-- gros -->
+       <!-- spec pasta stuff -->
         <div data-role="page" id="spec" data-theme="b">
            <div data-role="header" data-add-back-btn="true">
                <h1>Speck</h1>
@@ -268,21 +289,12 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
            </div><!-- /footer -->
        </div><!-- /page -->
        
-       
-       
-       <!--div data-role="page" id="second" data-theme="b">
-           <div data-role="header" data-add-back-btn="true">
-               <h1>Restaurants serving german food</h1>
-           </div>
-           <div data-role="content">
-               <p>Page content goes here.</p>
-           </div>
-           <div data-role="footer">
-               <h4> &copy; GermanIrish Food Company Teo.</h4>
-           </div>
-       </div>  -->
+<!-- end of german food list pages -->
 
 
+
+
+<!-- JSON import from callback on genjson.php -->
   <div data-role="page" id="reader" data-theme="a">
            <div data-role="header">
                <h1>Coffees and Teas Read from JSON (Lab 4) </h1>
@@ -309,53 +321,60 @@ $( document ).on( "pageshow", "#MakePage", function( event ) {
       </li-->
     </ul>
 
-
            </div><!-- /content -->
 
            <div data-role="footer">
                <h4>Lab 4 Jquery list dynamic import. By Conor Gilmer (conor.gilmer@gmail.com)</h4>
            </div><!-- /footer -->
        </div><!-- /page -->
+        
+<!-- end Json read from genjson.php -->
 
+ <!-- Biscuits -->
+        <div data-role="page" id="readarray">
+            <div data-role="header">
+                 <h3>Biscuits</h3>
 
+ <a data-role="button" data-rel="back" data-icon="back">Back</a>
+                    <a href="#home" class="ui-btn-right" data-icon="home" 
+           data-direction="reverse">Home</a> 
+            </div>
+            <div data-role="content">
+This is a bit of an after thoughtwhere i put in the function which originally read in from a json array.
 
-<div data-role="page" id="makePage" data-theme="b" data-transition="flip">
-	<div data-role="header" id="descriptionHeader">
-		<h1>Generated Page</h1>
-	</div>
-	<div class="ui-grid-a ui-responsive" data-role="content">
-		<div class="ui-block-a" >
-			<div class="parent" id="makeImg">
-   				<span class="clear"></span>
-			</div>
-		</div>
-		<div class="ui-block-b" id="makeText"></div>
-	</div>
+                <ul data-role='listview' data-inset='true' id='resultsList' data-theme="c" data-dividertheme="a">
+    <li data-role="list-divider">
+                    <!-- keep empty for dynamically added items -->
+                </ul>
+            </div>
+           <div data-role="footer">
+               <h4>By Conor Gilmer (conor.gilmer@gmail.com)</h4>
+           </div><!-- /footer -->
+        </div><!--readarray-->
+<!-- End of Biscuits list -->
 
-</div> 
-
-     
-
- <!-- display -->
-        <div data-role="page" id="displayPage">
+        <!-- display biscuit details -->
+        <div data-role="page" id="display">
             <div data-role="header">
                  <h3>Name Goes Here</h3>
  <a data-role="button" data-rel="back" data-icon="back">Back</a>
 
+                    <a href="#home" class="ui-btn-right" data-icon="home" 
+           data-direction="reverse">Home</a> 
             </div>
             <div data-role="content">
                 <div id="descriptionTxt">Definition goes here</div>
             </div>
-        </div>
-   
-  
+           <div data-role="footer">
+               <h4> By Conor Gilmer (conor.gilmer@gmail.com)</h4>
+           </div><!-- /footer -->
+        </div> <!--display-->
+<!-- end of biscuits list -->
 
-        
 
-<script src='http://127.0.0.1/jqmobile/assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script>
-<!--script src='http://www.appwayz.com/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
-<!--script src='http://localhost/jquery/
-assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
+<script src='genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script>
+<!--script src='http://www.appwayz.com/webelevate/mobdev/assignment/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
+<!--script src='http://127.0.0.1/jqmobile/Lab3/genjson.php?user=me&format=json&callback=listPosts' type='text/javascript'></script-->
 
 
 
